@@ -97,8 +97,13 @@ def columnar(row_table: list[dict[str, str]]) -> dict[str, list[str]]:
     return result
 
 
-def head(table: list[dict[str, str]], n: int) -> list[dict[str, str]]:
-    return table[:n]
+def head(table: dict[str, list[str]], n: int) -> dict[str, list[str]]:
+    result: dict[str, list[str]] = {}
+
+    for col in table:
+        result[col] = table[col][:n]
+
+    return result
 
 
 def select(table: dict[str, list[str]], columns: list[str]) -> dict[str, list[str]]:
